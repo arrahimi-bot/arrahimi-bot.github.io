@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>علیرضا رحیمی</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AR Rahimi</title>
+
+    <!-- فونت -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
+
+        /* =========================
+           تنظیمات اصلی
+        ========================= */
 
         * {
             margin: 0;
@@ -15,343 +41,329 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --background: #07070b;
+            --text: #ffffff;
+            --muted: rgba(255,255,255,0.58);
+            --border: rgba(255,255,255,0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             min-height: 100vh;
-            font-family: 'Vazirmatn', sans-serif;
-            color: #fff;
+
+            font-family: "Vazirmatn", sans-serif;
+
+            color: var(--text);
 
             background:
-                radial-gradient(circle at 50% 0%,
-                    rgba(0, 183, 255, 0.20),
-                    transparent 35%),
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(111, 76, 255, 0.20),
+                    transparent 30%
+                ),
 
-                radial-gradient(circle at 0% 80%,
-                    rgba(112, 0, 255, 0.14),
-                    transparent 30%),
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(0, 180, 255, 0.12),
+                    transparent 30%
+                ),
 
-                radial-gradient(circle at 100% 60%,
-                    rgba(255, 0, 170, 0.10),
-                    transparent 30%),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(180, 40, 255, 0.12),
+                    transparent 35%
+                ),
 
-                #05070c;
+                var(--background);
 
-            display: flex;
-            justify-content: center;
             overflow-x: hidden;
         }
 
-        /* پس زمینه شبکه ای */
 
-        body::before {
-            content: "";
+        /* =========================
+           نورهای متحرک پس زمینه
+        ========================= */
+
+        .light {
             position: fixed;
-            inset: 0;
 
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                );
+            width: 350px;
+            height: 350px;
 
-            background-size: 45px 45px;
+            border-radius: 50%;
 
-            mask-image: linear-gradient(
-                to bottom,
-                black,
-                transparent
-            );
+            filter: blur(100px);
+
+            opacity: 0.15;
 
             pointer-events: none;
-        }
-
-        /* نورهای شناور */
-
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(70px);
-            opacity: .25;
-            pointer-events: none;
-            animation: floating 7s ease-in-out infinite;
-        }
-
-        .orb.one {
-            width: 180px;
-            height: 180px;
-            background: #00c8ff;
-            top: 10%;
-            left: -80px;
-        }
-
-        .orb.two {
-            width: 200px;
-            height: 200px;
-            background: #732cff;
-            bottom: 5%;
-            right: -100px;
-            animation-delay: -3s;
-        }
-
-        @keyframes floating {
-            0%,100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-35px);
-            }
-        }
-
-        /* کانتینر */
-
-        .container {
-            width: 100%;
-            max-width: 480px;
-            min-height: 100vh;
-
-            padding:
-                55px
-                22px
-                40px;
-
-            position: relative;
-            z-index: 2;
-        }
-
-        /* پروفایل */
-
-        .profile {
-            text-align: center;
-
-            animation:
-                profileEnter
-                1s
-                ease
-                forwards;
-        }
-
-        @keyframes profileEnter {
-
-            from {
-                opacity: 0;
-                transform: translateY(-25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        }
-
-        /* عکس */
-
-        .profile-image-wrapper {
-            width: 145px;
-            height: 145px;
-
-            margin:
-                0
-                auto
-                25px;
-
-            position: relative;
-        }
-
-        .profile-image-wrapper::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: -14px;
-
-            border-radius: 50%;
-
-            background:
-                conic-gradient(
-                    #00eaff,
-                    #673cff,
-                    #ff2bd6,
-                    #00eaff
-                );
-
-            filter: blur(16px);
-
-            opacity: .55;
-          animation:
-                rotate
-                5s
-                linear
-                infinite;
-        }
-
-        .profile-image-wrapper::after {
-
-            content: "";
-
-            position: absolute;
-
-            inset: -5px;
-
-            border-radius: 50%;
-
-            background:
-                conic-gradient(
-                    #00eaff,
-                    #673cff,
-                    #ff2bd6,
-                    #00eaff
-                );
-
-            animation:
-                rotate
-                5s
-                linear
-                infinite;
 
             z-index: -1;
         }
 
-        @keyframes rotate {
+        .light.one {
+            background: #6d4aff;
+
+            top: -150px;
+            right: -100px;
+
+            animation:
+                floatOne 8s ease-in-out infinite alternate;
+        }
+
+        .light.two {
+            background: #00aaff;
+
+            bottom: -150px;
+            left: -100px;
+
+            animation:
+                floatTwo 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatOne {
 
             from {
-                transform: rotate(0deg);
+                transform: translate(0, 0);
             }
 
             to {
-                transform: rotate(360deg);
+                transform: translate(-80px, 70px);
             }
 
         }
 
-        .profile-image {
+        @keyframes floatTwo {
 
-            width: 145px;
-            height: 145px;
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(90px, -60px);
+            }
+
+        }
+
+
+        /* =========================
+           کانتینر اصلی
+        ========================= */
+
+        .container {
+
+            width: min(
+                620px,
+                calc(100% - 32px)
+            );
+
+            margin: auto;
+
+            padding:
+                65px 0 45px;
+        }
+
+
+        /* =========================
+           پروفایل
+        ========================= */
+
+        .profile {
+
+            text-align: center;
+
+            animation:
+                profileIn 1s
+                cubic-bezier(.2,.8,.2,1)
+                both;
+        }
+
+        @keyframes profileIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(35px)
+                    scale(.94);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+
+        /* قاب عکس */
+
+        .profile-image-wrapper {
+
+            width: 112px;
+            height: 112px;
+
+            margin: auto;
+
+            padding: 3px;
 
             border-radius: 50%;
 
-            object-fit: cover;
-
-            border:
-                4px solid
-                #080b11;
-
             background:
                 linear-gradient(
-                    145deg,
-                    #161b25,
-                    #05070b
+                    135deg,
+                    #ffffff,
+                    #755cff,
+                    #00c6ff,
+                    #ffffff
                 );
 
-            box-shadow:
-                0 0 30px
-                rgba(0,210,255,.30),
+            background-size: 300% 300%;
 
-                0 0 70px
-                rgba(110,50,255,.20);
+            animation:
+                gradientMove 5s ease infinite;
+
+            box-shadow:
+                0 0 35px
+                rgba(115, 85, 255, .28);
+        }
+
+        @keyframes gradientMove {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        /* عکس پروفایل */
+
+        .profile-image {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                3px solid #09090d;
 
             display: block;
         }
 
-        /* تا وقتی عکس نداریم */
-
-        .profile-image:not([src]),
-        .profile-image[src=""] {
-            background: #10151e;
-        }
 
         /* نام */
 
         .name {
 
-            font-size: 30px;
+            margin-top: 22px;
 
-            font-weight: 700;
+            font-size: 28px;
 
-            margin-bottom: 8px;
+            font-weight: 800;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #c8f6ff,
-                    #ffffff
-                );
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color:
-                transparent;
-
-            text-shadow:
-                0 0 30px
-                rgba(255,255,255,.12);
+            letter-spacing: -1px;
         }
 
-        .subtitle {
 
-            color: #758194;
+        /* یوزرنیم */
 
-            font-size: 13px;
+        .username {
 
-            margin-bottom: 38px;
+            margin-top: 5px;
+
+            font-size: 14px;
+
+            color: var(--muted);
         }
 
-        /* کارت ها */
 
-        .info-list {
+        /* توضیحات */
 
-            display:
-                flex;
+        .bio {
 
-            flex-direction:
-                column;
+            max-width: 470px;
 
-            gap: 15px;
+            margin:
+                17px auto 0;
+
+            line-height: 1.9;
+
+            font-size: 14px;
+
+            color:
+                rgba(255,255,255,.68);
         }
 
-        .info-card {
 
-            min-height: 76px;
+        /* =========================
+           کارت ها
+        ========================= */
 
-            display:
-                flex;
+        .links {
 
-            align-items:
-                center;
+            margin-top: 38px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        .link-card {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
 
             gap: 16px;
 
-            padding:
-                13px
-                15px;
+            min-height: 76px;
 
-            border-radius: 21px;
+            padding: 12px 16px;
+
+            text-decoration: none;
+
+            color: white;
+
+
+            /* شیشه ای */
 
             background:
                 linear-gradient(
-                    145deg,
+                    135deg,
                     rgba(255,255,255,.075),
                     rgba(255,255,255,.025)
                 );
 
+
             border:
-                1px solid
-                rgba(255,255,255,.08);
+                1px solid var(--border);
 
-            box-shadow:
-                inset 0 1px 0
-                rgba(255,255,255,.07),
+            border-radius: 22px;
 
-                0 15px 35px
-                rgba(0,0,0,.28);
 
             backdrop-filter:
                 blur(18px);
@@ -359,45 +371,57 @@
             -webkit-backdrop-filter:
                 blur(18px);
 
-            position: relative;
+
+            box-shadow:
+                0 15px 45px
+                rgba(0,0,0,.18);
+
 
             overflow: hidden;
+
+
+            /* حالت اولیه انیمیشن */
 
             opacity: 0;
 
             transform:
                 translateY(25px);
 
+
             animation:
-                cardEnter
-                .7s
-                ease
+                cardIn .7s
+                cubic-bezier(.2,.8,.2,1)
                 forwards;
         }
 
-        .info-card:nth-child(1) {
+
+        /* زمان ورود هر کارت */
+
+        .link-card:nth-child(1) {
             animation-delay: .15s;
         }
 
-        .info-card:nth-child(2) {
+        .link-card:nth-child(2) {
             animation-delay: .25s;
         }
 
-        .info-card:nth-child(3) {
+        .link-card:nth-child(3) {
             animation-delay: .35s;
         }
 
-        .info-card:nth-child(4) {
+        .link-card:nth-child(4) {
             animation-delay: .45s;
         }
 
-        .info-card:nth-child(5) {
+        .link-card:nth-child(5) {
             animation-delay: .55s;
         }
 
-        @keyframes cardEnter {
+
+        @keyframes cardIn {
 
             to {
+
                 opacity: 1;
 
                 transform:
@@ -406,245 +430,281 @@
 
         }
 
-        /* افکت نور عبوری */
 
-        .info-card::before {
-          content: "";
+        /* =========================
+           نور روی کارت
+        ========================= */
+
+        .link-card::before {
+
+            content: "";
 
             position: absolute;
 
-            width: 120px;
-            height: 150%;
-
-            top: -25%;
-            right: -170px;
+            width: 180px;
+            height: 180px;
 
             background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,.09),
-                    transparent
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.11),
+                    transparent 70%
                 );
 
-            transform:
-                skewX(-20deg);
+            top: -120px;
+            left: -120px;
 
             transition:
-                .8s;
+                .6s ease;
+
+            pointer-events: none;
         }
 
-        .info-card:hover::before {
-            right: 120%;
-        }
 
-        .info-card:hover {
+        .link-card:hover::before {
 
             transform:
-                translateY(-3px)
-                scale(1.015);
+                translate(
+                    190px,
+                    190px
+                );
+        }
+
+
+        /* =========================
+           هاور کارت
+        ========================= */
+
+        .link-card:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.012);
 
             border-color:
-                rgba(0,210,255,.25);
+                rgba(255,255,255,.20);
 
             box-shadow:
-                0 15px 45px
-                rgba(0,0,0,.4),
+
+                0 20px 55px
+                rgba(0,0,0,.28),
 
                 0 0 30px
-                rgba(0,200,255,.08);
+                rgba(110,90,255,.08);
         }
 
-        /* آیکون */
 
-        .icon {
+        /* حالت لمس */
 
-            width: 49px;
-            height: 49px;
-
-            min-width: 49px;
-
-            border-radius: 16px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            font-size: 22px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.13),
-                    rgba(255,255,255,.025)
-                );
-
-            border:
-                1px solid
-                rgba(255,255,255,.12);
-
-            box-shadow:
-
-                inset 0 2px 2px
-                rgba(255,255,255,.08),
-
-                inset 0 -6px 10px
-                rgba(0,0,0,.35),
-
-                0 8px 15px
-                rgba(0,0,0,.3);
-
-            transition:
-                .35s;
-
-            transform-style:
-                preserve-3d;
-        }
-
-        .info-card:hover .icon {
+        .link-card:active {
 
             transform:
-                perspective(400px)
-                rotateX(8deg)
-                rotateY(-12deg)
-                translateZ(8px)
-                scale(1.08);
+                scale(.975);
         }
 
-        /* رنگ آیکون ها */
 
-        .phone .icon {
-            color: #42dcff;
-            text-shadow:
-                0 0 15px
-                rgba(66,220,255,.8);
+        /* =========================
+           لوگوی اپلیکیشن
+        ========================= */
+
+        .app-icon {
+
+            width: 50px;
+            height: 50px;
+
+            flex-shrink: 0;
+
+            border-radius: 15px;
+
+            object-fit: contain;
+
+            background:
+                rgba(255,255,255,.07);
+
+            padding: 6px;
+
+            transition:
+                .4s
+                cubic-bezier(.2,.8,.2,1);
         }
 
-        .telegram .icon {
-            color: #36aee2;
-            text-shadow:
-                0 0 15px
-                rgba(54,174,226,.8);
+
+        .link-card:hover .app-icon {
+
+            transform:
+                scale(1.08)
+                rotate(-3deg);
         }
 
-        .instagram .icon {
-            color: #ff55b8;
-            text-shadow:
-                0 0 15px
-                rgba(255,85,184,.8);
+
+        /* =========================
+           متن کارت
+        ========================= */
+
+        .link-info {
+
+            flex: 1;
+
+            text-align: right;
         }
 
-        .bale .icon {
-            color: #ffe052;
-            text-shadow:
-                0 0 15px
-                rgba(255,224,82,.8);
+
+        .link-title {
+
+            font-size: 15px;
+
+            font-weight: 700;
         }
 
-        .eitaa .icon {
-            color: #ff9b4a;
-            text-shadow:
-                0 0 15px
-                rgba(255,155,74,.8);
-        }
 
-        /* متن */
+        .link-description {
 
-        .info-text {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap: 2px;
-
-            overflow: hidden;
-        }
-
-        .label {
+            margin-top: 4px;
 
             font-size: 12px;
 
-            color: #778396;
+            color: var(--muted);
         }
 
-        .value {
 
-            font-size: 16px;
+        /* =========================
+           فلش
+        ========================= */
 
-            font-weight: 700;
+        .arrow {
 
-            color: #f4f8fc;
+            width: 34px;
+            height: 34px;
 
-            direction: ltr;
+            border-radius: 50%;
 
-            text-align: right;
+            display: grid;
 
-            white-space: nowrap;
+            place-items: center;
 
-            overflow: hidden;
+            background:
+                rgba(255,255,255,.055);
 
-            text-overflow: ellipsis;
+            color:
+                rgba(255,255,255,.65);
+
+            font-size: 17px;
+
+            transition:
+                .35s;
         }
 
-        /* فوتر */
+
+        .link-card:hover .arrow {
+
+            transform:
+                translateX(-5px);
+
+            background:
+                rgba(255,255,255,.10);
+
+            color: white;
+        }
+
+
+        /* =========================
+           فوتر
+        ========================= */
 
         .footer {
 
             text-align: center;
 
-            margin-top: 38px;
+            margin-top: 45px;
 
-            color: #3e4858;
+            color:
+                rgba(255,255,255,.28);
 
-            font-size: 10px;
+            font-size: 11px;
+
+            animation:
+                fadeIn 1s ease 1s both;
         }
 
-        /* موبایل */
 
-        @media(max-width:380px) {
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           موبایل
+        ========================= */
+
+        @media (max-width: 500px) {
 
             .container {
-                padding:
-                    40px
-                    16px
-                    30px;
+
+                width:
+                    calc(100% - 24px);
+
+                padding-top: 45px;
             }
 
-            .profile-image-wrapper,
-            .profile-image {
 
-                width: 125px;
-                height: 125px;
+            .profile-image-wrapper {
+
+                width: 100px;
+                height: 100px;
             }
+
 
             .name {
-                font-size: 27px;
+
+                font-size: 25px;
             }
 
-            .value {
-                font-size: 14px;
+
+            .link-card {
+
+                min-height: 72px;
+
+                border-radius: 19px;
+            }
+
+
+            .app-icon {
+
+                width: 46px;
+                height: 46px;
             }
 
         }
-      </style>
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <div class="orb one"></div>
-    <div class="orb two"></div>
+
+    <!-- نورهای پس زمینه -->
+
+    <div class="light one"></div>
+
+    <div class="light two"></div>
+
 
     <main class="container">
 
-        <!-- PROFILE -->
+
+        <!-- =====================
+             پروفایل
+        ====================== -->
 
         <section class="profile">
 
@@ -652,139 +712,249 @@
 
                 <img
                     src="profile.jpg"
-                    alt="علیرضا رحیمی"
+                    alt="AR Rahimi"
                     class="profile-image"
                 >
 
             </div>
 
+
             <h1 class="name">
-                علیرضا رحیمی
+                AR Rahimi
             </h1>
 
-            <div class="subtitle">
-                اطلاعات تماس و شبکه‌های اجتماعی
+
+            <div class="username">
+                @arrahimi
             </div>
+
+
+            <p class="bio">
+                اینجا می‌تونی من رو در شبکه‌ها
+                و پلتفرم‌های مختلف دنبال کنی.
+            </p>
 
         </section>
 
 
-        <!-- INFORMATION -->
 
-        <section class="info-list">
+        <!-- =====================
+             لینک ها
+        ====================== -->
 
-            <div class="info-card phone">
-
-                <div class="icon">
-                    ☎
-                </div>
-
-                <div class="info-text">
-
-                    <span class="label">
-                        شماره تماس
-                    </span>
-
-                    <span class="value">
-                        09132681897
-                    </span>
-
-                </div>
-
-            </div>
+        <section class="links">
 
 
-            <div class="info-card telegram">
+            <!-- =================
+                 تلگرام
+            ================== -->
 
-                <div class="icon">
-                    ✈
-                </div>
+            <a
+                class="link-card"
+                href="https://t.me/arrahimi"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
 
-                <div class="info-text">
+                <img
+                    src="icons/telegram.png"
+                    class="app-icon"
+                    alt="Telegram"
+                >
 
-                    <span class="label">
+
+                <div class="link-info">
+
+                    <div class="link-title">
                         تلگرام
-                    </span>
+                    </div>
 
-                    <span class="value">
-                        @arrahimi
-                    </span>
+                    <div class="link-description">
+                        ارتباط با من در تلگرام
+                    </div>
 
                 </div>
 
-            </div>
 
-
-            <div class="info-card instagram">
-
-                <div class="icon">
-                    ◎
+                <div class="arrow">
+                    ←
                 </div>
 
-                <div class="info-text">
+            </a>
 
-                    <span class="label">
+
+
+            <!-- =================
+                 اینستاگرام
+            ================== -->
+
+            <a
+                class="link-card"
+                href="https://instagram.com/ar.rahimiiii"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <img
+                    src="icons/instagram.png"
+                    class="app-icon"
+                    alt="Instagram"
+                >
+
+
+                <div class="link-info">
+
+                    <div class="link-title">
                         اینستاگرام
-                    </span>
+                    </div>
 
-                    <span class="value">
-                        @ar.rahimiiii
-                    </span>
+                    <div class="link-description">
+                        صفحه اینستاگرام من
+                    </div>
 
                 </div>
 
-            </div>
 
-
-            <div class="info-card bale">
-
-                <div class="icon">
-                    ◈
+                <div class="arrow">
+                    ←
                 </div>
 
-                <div class="info-text">
+            </a>
 
-                    <span class="label">
+
+
+            <!-- =================
+                 بله
+            ================== -->
+
+            <a
+                class="link-card"
+                href="https://ble.ir/arr0000"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <img
+                    src="icons/bale.png"
+                    class="app-icon"
+                    alt="Bale"
+                >
+
+
+                <div class="link-info">
+
+                    <div class="link-title">
                         بله
-                    </span>
+                    </div>
 
-                    <span class="value">
-                        @arr0000
-                    </span>
+                    <div class="link-description">
+                        ارتباط با من در بله
+                    </div>
 
                 </div>
 
-            </div>
 
-
-            <div class="info-card eitaa">
-
-                <div class="icon">
-                    ✦
+                <div class="arrow">
+                    ←
                 </div>
 
-                <div class="info-text">
+            </a>
 
-                    <span class="label">
+
+
+            <!-- =================
+                 ایتا
+            ================== -->
+
+            <a
+                class="link-card"
+                href="https://eitaa.com/arr0000"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <img
+                    src="icons/eitaa.png"
+                    class="app-icon"
+                    alt="Eitaa"
+                >
+
+
+                <div class="link-info">
+
+                    <div class="link-title">
                         ایتا
-                    </span>
+                    </div>
 
-                    <span class="value">
-                        @arr0000
-                    </span>
+                    <div class="link-description">
+                        ارتباط با من در ایتا
+                    </div>
 
                 </div>
 
-            </div>
+
+                <div class="arrow">
+                    ←
+                </div>
+
+            </a>
+
+
+
+            <!-- =================
+                 تماس
+            ================== -->
+
+            <a
+                class="link-card"
+                href="tel:+989132681897"
+            >
+
+                <img
+                    src="icons/phone.png"
+                    class="app-icon"
+                    alt="تماس"
+                >
+
+
+                <div class="link-info">
+
+                    <div class="link-title">
+                        تماس با من
+                    </div>
+
+                    <div class="link-description">
+                        تماس مستقیم با من
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    ←
+                </div>
+
+            </a>
+
 
         </section>
 
+
+
+        <!-- =====================
+             فوتر
+        ====================== -->
 
         <footer class="footer">
-            © 2026
+
+            © 2026 AR Rahimi
+
         </footer>
+
 
     </main>
 
+
 </body>
+
 </html>
