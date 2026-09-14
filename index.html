@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>AR Rahimi | علیرضا رحیمی</title>
 
-    <title>AR Rahimi</title>
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
+    <meta name="description" content="راه‌های ارتباطی علیرضا رحیمی">
+    <meta name="theme-color" content="#08091a">
 
     <style>
+
+        /* =========================
+           RESET
+        ========================== */
 
         * {
             margin: 0;
@@ -29,546 +21,436 @@
             box-sizing: border-box;
         }
 
-
-        :root {
-
-            --bg: #05060b;
-
-            --white: #ffffff;
-
-            --muted:
-                rgba(255,255,255,.58);
-
-            --glass:
-                rgba(255,255,255,.075);
-
-            --glass-light:
-                rgba(255,255,255,.11);
-
-            --border:
-                rgba(255,255,255,.13);
-
-        }
-
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-
             min-height: 100vh;
-
             font-family:
-                "Vazirmatn",
+                Tahoma,
+                Arial,
                 sans-serif;
 
-            color: var(--white);
-
-            background:
-
-                radial-gradient(
-                    circle at 15% 5%,
-                    rgba(110,70,255,.27),
-                    transparent 32%
-                ),
-
-                radial-gradient(
-                    circle at 90% 20%,
-                    rgba(0,180,255,.16),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 50% 100%,
-                    rgba(145,40,255,.20),
-                    transparent 35%
-                ),
-
-                #05060b;
+            color: #ffffff;
 
             overflow-x: hidden;
 
-            position: relative;
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(111, 76, 255, 0.22),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 0% 60%,
+                    rgba(0, 183, 255, 0.12),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 100% 70%,
+                    rgba(179, 62, 255, 0.12),
+                    transparent 30%
+                ),
+                #070817;
         }
 
 
-        /* ==================================
-           شبکه بسیار ظریف پس زمینه
-        ================================== */
+        /* =========================
+           BACKGROUND GRID
+        ========================== */
 
         body::before {
-
             content: "";
-
             position: fixed;
-
             inset: 0;
 
             pointer-events: none;
 
-            opacity: .16;
-
             background-image:
-
                 linear-gradient(
-                    rgba(255,255,255,.025) 1px,
+                    rgba(255,255,255,0.018) 1px,
                     transparent 1px
                 ),
-
                 linear-gradient(
                     90deg,
-                    rgba(255,255,255,.025) 1px,
+                    rgba(255,255,255,0.018) 1px,
                     transparent 1px
                 );
 
-            background-size:
-                45px 45px;
+            background-size: 45px 45px;
 
             mask-image:
-                linear-gradient(
-                    to bottom,
+                radial-gradient(
+                    circle at center,
                     black,
-                    transparent 85%
+                    transparent 80%
                 );
 
+            z-index: 0;
         }
 
 
-        /* ==================================
-           نورهای متحرک
-        ================================== */
+        /* =========================
+           GLOW ORBS
+        ========================== */
 
         .orb {
-
             position: fixed;
 
             border-radius: 50%;
 
             pointer-events: none;
 
-            filter: blur(90px);
+            filter: blur(80px);
 
-            z-index: -1;
+            opacity: 0.35;
 
-            mix-blend-mode: screen;
-
+            z-index: 0;
         }
-
 
         .orb1 {
+            width: 280px;
+            height: 280px;
 
-            width: 330px;
-            height: 330px;
-
-            background:
-                rgba(105,70,255,.22);
-
-            top: -130px;
+            top: -100px;
             right: -100px;
 
+            background: #653cff;
+
             animation:
-                orbOne 11s ease-in-out infinite alternate;
-
+                orbFloat1 10s ease-in-out infinite alternate;
         }
-
 
         .orb2 {
+            width: 230px;
+            height: 230px;
 
-            width: 300px;
-            height: 300px;
-
-            background:
-                rgba(0,160,255,.16);
-
-            bottom: -100px;
+            bottom: 10%;
             left: -100px;
 
+            background: #009dff;
+
             animation:
-                orbTwo 13s ease-in-out infinite alternate;
-
+                orbFloat2 13s ease-in-out infinite alternate;
         }
-
 
         .orb3 {
+            width: 190px;
+            height: 190px;
 
-            width: 180px;
-            height: 180px;
+            top: 42%;
+            right: -100px;
 
-            background:
-                rgba(180,60,255,.12);
-
-            top: 45%;
-            left: 35%;
+            background: #bd36ff;
 
             animation:
-                orbThree 9s ease-in-out infinite alternate;
-
+                orbFloat3 11s ease-in-out infinite alternate;
         }
 
-
-        @keyframes orbOne {
-
+        @keyframes orbFloat1 {
             from {
-                transform:
-                    translate(0,0)
-                    scale(1);
+                transform: translate(0, 0) scale(1);
             }
 
             to {
-                transform:
-                    translate(-100px,100px)
-                    scale(1.25);
+                transform: translate(-60px, 80px) scale(1.2);
             }
-
         }
 
-
-        @keyframes orbTwo {
-
+        @keyframes orbFloat2 {
             from {
-                transform:
-                    translate(0,0)
-                    scale(1);
+                transform: translate(0, 0) scale(1);
             }
 
             to {
-                transform:
-                    translate(100px,-100px)
-                    scale(1.2);
+                transform: translate(80px, -60px) scale(1.15);
             }
-
         }
 
-
-        @keyframes orbThree {
-
+        @keyframes orbFloat3 {
             from {
-                transform:
-                    translate(-40px,-20px);
+                transform: translate(0, 0) scale(1);
             }
 
             to {
-                transform:
-                    translate(50px,50px);
+                transform: translate(-50px, 30px) scale(1.25);
             }
-
         }
 
 
-        /* ==================================
-           کانتینر
-        ================================== */
+        /* =========================
+           MAIN
+        ========================== */
 
         .container {
+            position: relative;
 
-            width:
-                min(
-                    620px,
-                    calc(100% - 28px)
-                );
+            z-index: 2;
+
+            width: 100%;
+
+            max-width: 520px;
 
             margin: auto;
 
             padding:
-                60px 0 45px;
-
-        }
-
-
-        /* ==================================
-           پروفایل
-        ================================== */
-
-        .profile {
+                55px 20px 35px;
 
             text-align: center;
-
-            opacity: 0;
-
-            animation:
-                profileAppear
-                1.1s
-                cubic-bezier(.16,1,.3,1)
-                forwards;
-
         }
 
+
+        /* =========================
+           PROFILE
+        ========================== */
+
+        .profile {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            animation:
+                profileAppear 1s
+                cubic-bezier(.2,.8,.2,1)
+                both;
+        }
 
         @keyframes profileAppear {
 
             from {
-
                 opacity: 0;
 
                 transform:
-                    translateY(45px)
+                    translateY(-35px)
                     scale(.92);
-
-                filter:
-                    blur(10px);
-
             }
 
             to {
-
                 opacity: 1;
 
                 transform:
                     translateY(0)
                     scale(1);
-
-                filter:
-                    blur(0);
-
             }
-
         }
 
 
-        /* ==================================
-           عکس پروفایل
-        ================================== */
+        /* =========================
+           PROFILE IMAGE RING
+        ========================== */
 
         .profile-ring {
-
             position: relative;
 
-            width: 124px;
-            height: 124px;
+            width: 132px;
+            height: 132px;
 
-            margin: auto;
+            display: flex;
 
-            padding: 3px;
+            align-items: center;
+            justify-content: center;
 
-            border-radius: 50%;
-
-            background:
-
-                conic-gradient(
-                    from 0deg,
-                    #7658ff,
-                    #b59cff,
-                    #28c8ff,
-                    #7658ff
-                );
-
-            animation:
-                ringRotate
-                7s
-                linear
-                infinite;
-
-            box-shadow:
-
-                0 0 25px
-                rgba(110,80,255,.35),
-
-                0 0 70px
-                rgba(110,80,255,.13);
-
+            margin-bottom: 22px;
         }
-
-
-        @keyframes ringRotate {
-
-            to {
-                transform:
-                    rotate(360deg);
-            }
-
-        }
-
 
         .profile-ring::before {
-
             content: "";
 
             position: absolute;
 
-            inset: -9px;
+            inset: -5px;
 
             border-radius: 50%;
 
-            border:
-                1px solid
-                rgba(150,120,255,.22);
+            background:
+                conic-gradient(
+                    from 0deg,
+                    #6d4aff,
+                    #00c6ff,
+                    #b03cff,
+                    #6d4aff
+                );
 
             animation:
-                pulseRing
-                3s
-                ease-in-out
-                infinite;
+                rotateRing 5s linear infinite;
 
+            filter:
+                blur(1px)
+                drop-shadow(
+                    0 0 12px rgba(113, 76, 255, .8)
+                );
         }
 
+        .profile-ring::after {
+            content: "";
 
-        @keyframes pulseRing {
+            position: absolute;
 
-            0%,100% {
-
-                transform:
-                    scale(.95);
-
-                opacity: .3;
-
-            }
-
-            50% {
-
-                transform:
-                    scale(1.08);
-
-                opacity: .7;
-
-            }
-
-        }
-
-
-        .profile-image {
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
+            inset: -13px;
 
             border-radius: 50%;
 
-            border:
-                4px solid #07080d;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(104, 70, 255, .35),
+                    transparent 65%
+                );
 
-            display: block;
+            filter: blur(8px);
+
+            z-index: -1;
 
             animation:
-                imageAppear
-                1.2s
-                ease
-                both;
-
+                profileGlow 3s ease-in-out infinite alternate;
         }
 
+        @keyframes rotateRing {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
-        @keyframes imageAppear {
-
+        @keyframes profileGlow {
             from {
-
-                opacity: 0;
-
-                transform:
-                    scale(.75);
-
+                opacity: .55;
+                transform: scale(.92);
             }
 
             to {
-
                 opacity: 1;
-
-                transform:
-                    scale(1);
-
+                transform: scale(1.08);
             }
+        }
 
+        .profile-image {
+            position: relative;
+
+            width: 120px;
+            height: 120px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border: 4px solid rgba(10, 10, 25, .9);
+
+            background: #101126;
+
+            z-index: 2;
+
+            box-shadow:
+                0 0 25px rgba(98, 73, 255, .55),
+                inset 0 0 20px rgba(255,255,255,.08);
         }
 
 
+        /* =========================
+           NAME
+        ========================== */
+
         .name {
-
-            margin-top: 25px;
-
             font-size: 30px;
 
             font-weight: 800;
 
-            letter-spacing: -.8px;
+            letter-spacing: -0.8px;
 
-            text-shadow:
-                0 0 25px
-                rgba(255,255,255,.08);
+            margin-bottom: 8px;
 
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #c9c4ff,
+                    #ffffff
+                );
+
+            background-size: 200% auto;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            animation:
+                nameShine 5s linear infinite;
         }
 
+        @keyframes nameShine {
+
+            to {
+                background-position:
+                    200% center;
+            }
+        }
 
         .username {
+            font-size: 16px;
 
-            margin-top: 5px;
+            color: rgba(255,255,255,.62);
 
-            color:
-                rgba(255,255,255,.50);
+            font-weight: 500;
 
-            font-size: 14px;
-
+            margin-bottom: 15px;
         }
-
 
         .bio {
+            max-width: 390px;
 
-            max-width: 500px;
+            margin: auto;
 
-            margin:
-                18px auto 0;
-
-            color:
-                rgba(255,255,255,.66);
+            line-height: 1.9;
 
             font-size: 14px;
 
-            line-height: 2;
+            color: rgba(255,255,255,.58);
 
+            margin-bottom: 35px;
         }
 
 
-        /* ==================================
-           لینک ها
-        ================================== */
+        /* =========================
+           CARDS
+        ========================== */
 
         .links {
+            display: flex;
 
-            margin-top: 42px;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
+            flex-direction: column;
 
             gap: 15px;
-
         }
 
-
-        /* ==================================
-           کارت شیشه ای
-        ================================== */
-
         .link-card {
-
             position: relative;
-
-            min-height: 82px;
 
             display: flex;
 
             align-items: center;
 
-            gap: 16px;
+            width: 100%;
 
-            padding:
-                13px 17px;
+            min-height: 76px;
+
+            padding: 12px 18px;
 
             text-decoration: none;
 
             color: white;
 
-            border-radius: 24px;
+            overflow: hidden;
+
+            border-radius: 22px;
 
             border:
                 1px solid
-                var(--border);
+                rgba(255,255,255,.11);
 
             background:
-
                 linear-gradient(
                     135deg,
                     rgba(255,255,255,.105),
@@ -584,85 +466,103 @@
                 saturate(150%);
 
             box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.22),
 
                 inset 0 1px 0
-                rgba(255,255,255,.10),
+                rgba(255,255,255,.08);
 
-                inset 0 -1px 0
-                rgba(255,255,255,.025),
-
-                0 20px 50px
-                rgba(0,0,0,.20);
-
-            overflow: hidden;
+            transition:
+                transform .35s cubic-bezier(.2,.8,.2,1),
+                border-color .35s ease,
+                box-shadow .35s ease,
+                background .35s ease;
 
             opacity: 0;
 
-            transform:
-                translateY(35px)
-                scale(.97);
-
             animation:
                 cardAppear
-                .85s
-                cubic-bezier(.16,1,.3,1)
+                .7s
+                cubic-bezier(.2,.8,.2,1)
                 forwards;
-
-            transition:
-                transform .45s
-                cubic-bezier(.16,1,.3,1),
-
-                border-color .4s,
-
-                box-shadow .4s;
-
         }
 
-
-        /* ورود مرحله ای */
-
         .link-card:nth-child(1) {
-            animation-delay: .18s;
+            animation-delay: .25s;
         }
 
         .link-card:nth-child(2) {
-            animation-delay: .30s;
+            animation-delay: .35s;
         }
 
         .link-card:nth-child(3) {
-            animation-delay: .42s;
+            animation-delay: .45s;
         }
 
         .link-card:nth-child(4) {
-            animation-delay: .54s;
+            animation-delay: .55s;
         }
 
         .link-card:nth-child(5) {
-            animation-delay: .66s;
+            animation-delay: .65s;
         }
-
 
         @keyframes cardAppear {
 
-            to {
+            from {
+                opacity: 0;
 
+                transform:
+                    translateY(30px)
+                    scale(.96);
+            }
+
+            to {
                 opacity: 1;
 
                 transform:
                     translateY(0)
                     scale(1);
-
             }
-
         }
 
 
-        /* ==================================
-           خط نورانی که از روی کارت رد می شود
-        ================================== */
+        /* =========================
+           CARD GLOW
+        ========================== */
+
+        .link-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+            height: 160px;
+
+            right: -80px;
+            top: -80px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(105,75,255,.32),
+                    transparent 70%
+                );
+
+            filter: blur(8px);
+
+            transition:
+                transform .5s ease,
+                opacity .5s ease;
+
+            opacity: .55;
+
+            pointer-events: none;
+        }
 
         .link-card::after {
-
             content: "";
 
             position: absolute;
@@ -670,399 +570,361 @@
             top: 0;
             bottom: 0;
 
-            width: 80px;
+            left: -120%;
 
-            left: -120px;
+            width: 80%;
+
+            transform:
+                skewX(-20deg);
 
             background:
-
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255,255,255,.14),
+                    rgba(255,255,255,.10),
                     transparent
                 );
 
-            transform:
-                skewX(-18deg);
-
             transition:
-                left .8s ease;
+                left .7s ease;
 
             pointer-events: none;
-
         }
-
 
         .link-card:hover::after {
-
-            left: 120%;
-
+            left: 140%;
         }
-
-
-        /* ==================================
-           هاله نور کارت
-        ================================== */
-
-        .link-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 220px;
-            height: 220px;
-
-            left: -150px;
-            top: -150px;
-
-            border-radius: 50%;
-
-            background:
-
-                radial-gradient(
-                    circle,
-                    rgba(125,95,255,.17),
-                    transparent 70%
-                );
-
-            transition:
-                .6s ease;
-
-            pointer-events: none;
-
-        }
-
 
         .link-card:hover::before {
+            transform: scale(1.5);
 
-            transform:
-                translate(180px,180px);
-
+            opacity: .9;
         }
-
 
         .link-card:hover {
 
             transform:
                 translateY(-5px)
-                scale(1.012);
+                scale(1.015);
 
             border-color:
-                rgba(170,150,255,.25);
+                rgba(155,135,255,.35);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.14),
+                    rgba(120,90,255,.07)
+                );
 
             box-shadow:
+                0 18px 45px
+                rgba(0,0,0,.32),
+
+                0 0 28px
+                rgba(105,75,255,.18),
 
                 inset 0 1px 0
-                rgba(255,255,255,.14),
-
-                0 25px 65px
-                rgba(0,0,0,.30),
-
-                0 0 35px
-                rgba(100,80,255,.08);
-
+                rgba(255,255,255,.13);
         }
-
 
         .link-card:active {
-
             transform:
-                scale(.975);
-
+                scale(.98);
         }
 
 
-        /* ==================================
-           لوگو
-        ================================== */
+        /* =========================
+           ICON
+        ========================== */
 
-        .app-icon {
-
+        .icon-box {
             position: relative;
-
-            z-index: 2;
-
-            width: 54px;
-            height: 54px;
 
             flex-shrink: 0;
 
-            padding: 7px;
+            width: 52px;
+            height: 52px;
 
-            object-fit: contain;
+            display: flex;
 
-            border-radius: 17px;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
 
             background:
-                rgba(255,255,255,.075);
+                rgba(255,255,255,.07);
 
             border:
                 1px solid
-                rgba(255,255,255,.09);
+                rgba(255,255,255,.08);
 
             box-shadow:
-
                 inset 0 1px 0
-                rgba(255,255,255,.12),
+                rgba(255,255,255,.08),
 
-                0 8px 25px
-                rgba(0,0,0,.18);
+                0 0 18px
+                rgba(100,70,255,.08);
 
             transition:
-                .45s
-                cubic-bezier(.16,1,.3,1);
-
+                transform .35s ease,
+                box-shadow .35s ease;
         }
 
+        .app-icon {
+            width: 34px;
+            height: 34px;
+
+            object-fit: contain;
+
+            display: block;
+
+            transition:
+                transform .35s
+                cubic-bezier(.2,.8,.2,1),
+
+                filter .35s ease;
+        }
 
         .link-card:hover .app-icon {
-
             transform:
-                scale(1.1)
-                rotate(-4deg);
+                scale(1.12)
+                rotate(-3deg);
+
+            filter:
+                drop-shadow(
+                    0 0 8px
+                    rgba(255,255,255,.22)
+                );
+        }
+
+        .link-card:hover .icon-box {
+            transform:
+                scale(1.05);
 
             box-shadow:
+                0 0 22px
+                rgba(111,76,255,.18),
 
-                0 8px 30px
-                rgba(120,90,255,.16);
-
+                inset 0 1px 0
+                rgba(255,255,255,.1);
         }
 
 
-        /* ==================================
-           متن
-        ================================== */
+        /* =========================
+           CARD TEXT
+        ========================== */
 
-        .link-info {
-
-            position: relative;
-
-            z-index: 2;
-
+        .card-content {
             flex: 1;
 
             text-align: right;
 
+            margin-right: 15px;
+
+            min-width: 0;
         }
 
-
-        .link-title {
-
+        .card-title {
             font-size: 16px;
 
             font-weight: 700;
 
+            margin-bottom: 5px;
         }
 
-
-        .link-description {
-
-            margin-top: 4px;
-
+        .card-subtitle {
             font-size: 12px;
 
             color:
-                rgba(255,255,255,.53);
+                rgba(255,255,255,.48);
 
+            direction: ltr;
+
+            text-align: right;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
         }
 
 
-        /* ==================================
-           فلش
-        ================================== */
+        /* =========================
+           ARROW
+        ========================== */
 
         .arrow {
+            flex-shrink: 0;
 
-            position: relative;
+            width: 32px;
+            height: 32px;
 
-            z-index: 2;
+            display: flex;
 
-            width: 38px;
-            height: 38px;
-
-            display: grid;
-
-            place-items: center;
+            align-items: center;
+            justify-content: center;
 
             border-radius: 50%;
 
             background:
                 rgba(255,255,255,.055);
 
-            border:
-                1px solid
-                rgba(255,255,255,.06);
-
             color:
-                rgba(255,255,255,.62);
+                rgba(255,255,255,.6);
 
             font-size: 18px;
 
             transition:
-                .4s
-                cubic-bezier(.16,1,.3,1);
-
+                transform .35s ease,
+                background .35s ease,
+                color .35s ease;
         }
 
-
         .link-card:hover .arrow {
-
             transform:
-                translateX(-6px);
+                translateX(-5px);
 
             background:
                 rgba(255,255,255,.11);
 
             color: white;
-
         }
 
 
-        /* ==================================
-           فوتر
-        ================================== */
+        /* =========================
+           FOOTER
+        ========================== */
 
         .footer {
+            margin-top: 35px;
 
-            margin-top: 48px;
-
-            text-align: center;
+            color:
+                rgba(255,255,255,.28);
 
             font-size: 11px;
 
-            color:
-                rgba(255,255,255,.25);
-
-            opacity: 0;
+            letter-spacing: .3px;
 
             animation:
                 footerAppear
                 1s
-                ease
-                1.1s
-                forwards;
-
+                1.2s
+                both;
         }
 
-
         @keyframes footerAppear {
+
+            from {
+                opacity: 0;
+            }
 
             to {
                 opacity: 1;
             }
-
         }
 
 
-        /* ==================================
-           موبایل
-        ================================== */
+        /* =========================
+           MOBILE
+        ========================== */
 
-        @media (max-width: 500px) {
+        @media (max-width: 480px) {
 
             .container {
-
-                width:
-                    calc(100% - 22px);
-
-                padding-top: 48px;
-
+                padding:
+                    40px 16px 28px;
             }
-
 
             .profile-ring {
-
-                width: 108px;
-                height: 108px;
-
+                width: 116px;
+                height: 116px;
             }
 
+            .profile-image {
+                width: 105px;
+                height: 105px;
+            }
 
             .name {
-
                 font-size: 27px;
-
             }
 
+            .username {
+                font-size: 15px;
+            }
 
             .bio {
-
                 font-size: 13px;
 
-                padding:
-                    0 5px;
-
+                margin-bottom: 28px;
             }
-
 
             .link-card {
+                min-height: 72px;
 
-                min-height: 78px;
-
-                border-radius: 21px;
+                border-radius: 19px;
 
                 padding:
-                    11px 14px;
-
+                    10px 14px;
             }
 
+            .icon-box {
+                width: 48px;
+                height: 48px;
+
+                border-radius: 14px;
+            }
 
             .app-icon {
-
-                width: 50px;
-                height: 50px;
-
-                border-radius: 15px;
-
+                width: 31px;
+                height: 31px;
             }
 
+            .card-content {
+                margin-right: 12px;
+            }
+
+            .card-title {
+                font-size: 15px;
+            }
+
+            .card-subtitle {
+                font-size: 11px;
+            }
 
             .arrow {
-
-                width: 35px;
-                height: 35px;
-
+                width: 29px;
+                height: 29px;
             }
-
         }
 
 
-        /* ==================================
-           کاهش انیمیشن برای دستگاه هایی
-           که این گزینه را فعال کرده اند
-        ================================== */
+        /* =========================
+           REDUCED MOTION
+        ========================== */
 
         @media (prefers-reduced-motion: reduce) {
 
             *,
             *::before,
             *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
 
-                animation-duration:
-                    .01ms !important;
-
-                animation-iteration-count:
-                    1 !important;
-
-                transition-duration:
-                    .01ms !important;
-
+                transition-duration: .01ms !important;
             }
-
         }
 
     </style>
-
 </head>
 
 
 <body>
 
-
-    <!-- نورهای متحرک -->
-
+    <!-- Background Glow -->
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
@@ -1076,7 +938,6 @@
         ====================== -->
 
         <section class="profile">
-
 
             <div class="profile-ring">
 
@@ -1095,15 +956,14 @@
 
 
             <div class="username">
-                arrahimi@
+                علیرضا رحیمی
             </div>
 
 
             <p class="bio">
-                اینجا می‌تونی من رو در شبکه‌ها
-                و پلتفرم‌های مختلف دنبال کنی.
+                برای ارتباط و دنبال کردن من،
+                می‌توانید از راه‌های زیر با من در ارتباط باشید.
             </p>
-
 
         </section>
 
@@ -1116,30 +976,34 @@
         <section class="links">
 
 
-            <!-- تلگرام -->
+            <!-- Telegram -->
 
             <a
-                class="link-card"
                 href="https://t.me/arrahimi"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="link-card"
             >
 
-                <img
-                    src="telegram.png"
-                    class="app-icon"
-                    alt="Telegram"
-                >
+                <div class="icon-box">
+
+                    <img
+                        src="telegram.png"
+                        class="app-icon"
+                        alt="Telegram"
+                    >
+
+                </div>
 
 
-                <div class="link-info">
+                <div class="card-content">
 
-                    <div class="link-title">
+                    <div class="card-title">
                         تلگرام
                     </div>
 
-                    <div class="link-description">
-                        ارتباط با من در تلگرام
+                    <div class="card-subtitle">
+                        @arrahimi
                     </div>
 
                 </div>
@@ -1153,30 +1017,34 @@
 
 
 
-            <!-- اینستاگرام -->
+            <!-- Instagram -->
 
             <a
-                class="link-card"
                 href="https://instagram.com/ar.rahimiiii"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="link-card"
             >
 
-                <img
-                    src="instagram.png"
-                    class="app-icon"
-                    alt="Instagram"
-                >
+                <div class="icon-box">
+
+                    <img
+                        src="instagram.png"
+                        class="app-icon"
+                        alt="Instagram"
+                    >
+
+                </div>
 
 
-                <div class="link-info">
+                <div class="card-content">
 
-                    <div class="link-title">
+                    <div class="card-title">
                         اینستاگرام
                     </div>
 
-                    <div class="link-description">
-                        صفحه اینستاگرام من
+                    <div class="card-subtitle">
+                        @ar.rahimiiii
                     </div>
 
                 </div>
@@ -1190,30 +1058,34 @@
 
 
 
-            <!-- بله -->
+            <!-- Bale -->
 
             <a
-                class="link-card"
                 href="https://ble.ir/arr0000"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="link-card"
             >
 
-                <img
-                    src="bale.png"
-                    class="app-icon"
-                    alt="Bale"
-                >
+                <div class="icon-box">
+
+                    <img
+                        src="bale.png"
+                        class="app-icon"
+                        alt="Bale"
+                    >
+
+                </div>
 
 
-                <div class="link-info">
+                <div class="card-content">
 
-                    <div class="link-title">
+                    <div class="card-title">
                         بله
                     </div>
 
-                    <div class="link-description">
-                        ارتباط با من در بله
+                    <div class="card-subtitle">
+                        @arr0000
                     </div>
 
                 </div>
@@ -1227,30 +1099,34 @@
 
 
 
-            <!-- ایتا -->
+            <!-- Eitaa -->
 
             <a
-                class="link-card"
                 href="https://eitaa.com/arr0000"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="link-card"
             >
 
-                <img
-                    src="eitaa.png"
-                    class="app-icon"
-                    alt="Eitaa"
-                >
+                <div class="icon-box">
+
+                    <img
+                        src="eitaa.png"
+                        class="app-icon"
+                        alt="Eitaa"
+                    >
+
+                </div>
 
 
-                <div class="link-info">
+                <div class="card-content">
 
-                    <div class="link-title">
+                    <div class="card-title">
                         ایتا
                     </div>
 
-                    <div class="link-description">
-                        ارتباط با من در ایتا
+                    <div class="card-subtitle">
+                        @arr0000
                     </div>
 
                 </div>
@@ -1264,28 +1140,32 @@
 
 
 
-            <!-- تماس -->
+            <!-- Phone -->
 
             <a
-                class="link-card"
                 href="tel:+989132681897"
+                class="link-card"
             >
 
-                <img
-                    src="phone.png"
-                    class="app-icon"
-                    alt="تماس"
-                >
+                <div class="icon-box">
+
+                    <img
+                        src="phone.png"
+                        class="app-icon"
+                        alt="تماس"
+                    >
+
+                </div>
 
 
-                <div class="link-info">
+                <div class="card-content">
 
-                    <div class="link-title">
-                        تماس با من
+                    <div class="card-title">
+                        تماس تلفنی
                     </div>
 
-                    <div class="link-description">
-                        تماس مستقیم با من
+                    <div class="card-subtitle">
+                        09132681897
                     </div>
 
                 </div>
@@ -1302,10 +1182,12 @@
 
 
 
+        <!-- =====================
+             FOOTER
+        ====================== -->
+
         <footer class="footer">
-
             © 2026 AR Rahimi
-
         </footer>
 
 
@@ -1313,5 +1195,4 @@
 
 
 </body>
-
 </html>
