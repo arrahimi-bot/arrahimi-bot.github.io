@@ -1190,6 +1190,517 @@
             © 2026 AR Rahimi
         </footer>
 
+        <!-- =========================
+     BIOGRAPHY SECTION
+========================= -->
+
+<style>
+    .ar-bio {
+        position: relative;
+        width: 100%;
+        max-width: 520px;
+        margin: 48px auto 0;
+        padding: 28px 23px 25px;
+
+        text-align: right;
+
+        border-radius: 26px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.11),
+                rgba(255,255,255,.035)
+            );
+
+        border: 1px solid rgba(255,255,255,.12);
+
+        backdrop-filter:
+            blur(28px)
+            saturate(160%);
+
+        -webkit-backdrop-filter:
+            blur(28px)
+            saturate(160%);
+
+        box-shadow:
+            0 20px 60px rgba(0,0,0,.28),
+            0 0 35px rgba(100,75,255,.12),
+            inset 0 1px 0 rgba(255,255,255,.09);
+
+        overflow: hidden;
+
+        opacity: 0;
+
+        animation:
+            arBioAppear 1s
+            cubic-bezier(.2,.8,.2,1)
+            .9s forwards;
+    }
+
+
+    /* نور گوشه بالای کارت */
+
+    .ar-bio::before {
+        content: "";
+
+        position: absolute;
+
+        width: 240px;
+        height: 240px;
+
+        top: -150px;
+        right: -100px;
+
+        border-radius: 50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(105,75,255,.38),
+                transparent 68%
+            );
+
+        filter: blur(12px);
+
+        pointer-events: none;
+
+        animation:
+            arBioGlow 5s
+            ease-in-out
+            infinite alternate;
+    }
+
+
+    /* خط نورانی پایین */
+
+    .ar-bio::after {
+        content: "";
+
+        position: absolute;
+
+        left: 12%;
+        right: 12%;
+
+        bottom: 0;
+
+        height: 1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(116,87,255,.9),
+                rgba(0,195,255,.8),
+                transparent
+            );
+
+        box-shadow:
+            0 0 14px
+            rgba(104,80,255,.9);
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .ar-bio-header {
+        position: relative;
+
+        z-index: 2;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 13px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .ar-bio-icon {
+        width: 45px;
+        height: 45px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 15px;
+
+        font-size: 21px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(112,82,255,.25),
+                rgba(0,195,255,.10)
+            );
+
+        border:
+            1px solid
+            rgba(140,120,255,.22);
+
+        box-shadow:
+            0 0 22px
+            rgba(105,76,255,.2),
+
+            inset 0 1px 0
+            rgba(255,255,255,.10);
+
+        animation:
+            arIconPulse 3s
+            ease-in-out
+            infinite;
+    }
+
+
+    .ar-bio-title {
+        font-size: 19px;
+
+        font-weight: 800;
+
+        color: #fff;
+
+        position: relative;
+    }
+
+
+    .ar-bio-title::after {
+        content: "";
+
+        position: absolute;
+
+        right: 0;
+
+        bottom: -7px;
+
+        width: 42px;
+        height: 2px;
+
+        border-radius: 20px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #795cff,
+                #00c6ff
+            );
+
+        box-shadow:
+            0 0 10px
+            rgba(115,85,255,.9);
+    }
+
+
+    /* =========================
+       TEXT
+    ========================= */
+
+    .ar-bio-text {
+        position: relative;
+
+        z-index: 2;
+
+        color:
+            rgba(255,255,255,.70);
+
+        font-size: 14px;
+
+        line-height: 2.3;
+
+        text-align: justify;
+
+        text-align-last: right;
+    }
+
+
+    .ar-bio-highlight {
+        color: #ddd8ff;
+
+        font-weight: 700;
+
+        text-shadow:
+            0 0 12px
+            rgba(120,95,255,.4);
+    }
+
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .ar-bio-skills {
+        position: relative;
+
+        z-index: 2;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        margin-top: 24px;
+    }
+
+
+    .ar-bio-skill {
+        padding: 7px 11px;
+
+        border-radius: 12px;
+
+        color:
+            rgba(255,255,255,.65);
+
+        font-size: 10px;
+
+        background:
+            rgba(255,255,255,.055);
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
+
+        box-shadow:
+            inset 0 1px 0
+            rgba(255,255,255,.05);
+
+        transition:
+            transform .3s ease,
+            background .3s ease,
+            border-color .3s ease;
+    }
+
+
+    .ar-bio-skill:hover {
+        transform:
+            translateY(-3px);
+
+        background:
+            rgba(112,84,255,.12);
+
+        border-color:
+            rgba(135,110,255,.3);
+
+        color: #fff;
+    }
+
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes arBioAppear {
+
+        from {
+            opacity: 0;
+
+            transform:
+                translateY(35px)
+                scale(.96);
+        }
+
+        to {
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+        }
+    }
+
+
+    @keyframes arBioGlow {
+
+        from {
+            transform:
+                translate(0,0)
+                scale(1);
+
+            opacity: .5;
+        }
+
+        to {
+            transform:
+                translate(-30px,25px)
+                scale(1.25);
+
+            opacity: .9;
+        }
+    }
+
+
+    @keyframes arIconPulse {
+
+        0%, 100% {
+            box-shadow:
+                0 0 18px
+                rgba(105,76,255,.15),
+
+                inset 0 1px 0
+                rgba(255,255,255,.08);
+        }
+
+        50% {
+            box-shadow:
+                0 0 30px
+                rgba(105,76,255,.32),
+
+                inset 0 1px 0
+                rgba(255,255,255,.12);
+        }
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+        .ar-bio {
+            margin-top: 35px;
+
+            padding:
+                23px 18px 24px;
+
+            border-radius: 22px;
+        }
+
+        .ar-bio-header {
+            margin-bottom: 18px;
+        }
+
+        .ar-bio-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 13px;
+
+            font-size: 19px;
+        }
+
+        .ar-bio-title {
+            font-size: 17px;
+        }
+
+        .ar-bio-text {
+            font-size: 13px;
+
+            line-height: 2.2;
+
+            text-align: right;
+        }
+
+        .ar-bio-skills {
+            gap: 6px;
+
+            margin-top: 20px;
+        }
+
+        .ar-bio-skill {
+            padding:
+                6px 9px;
+
+            font-size: 9px;
+        }
+    }
+</style>
+
+
+<section class="ar-bio">
+
+    <div class="ar-bio-header">
+
+        <div class="ar-bio-icon">
+            ✦
+        </div>
+
+        <div class="ar-bio-title">
+            درباره من
+        </div>
+
+    </div>
+
+
+    <div class="ar-bio-text">
+
+        من
+        <span class="ar-bio-highlight">
+            علیرضا رحیمی
+        </span>
+        ، ۱۶ ساله و دانش‌آموز پایه دهم در رشته ریاضی هستم.
+
+        از سال‌های گذشته در حوزه‌های مختلف فرهنگی، هنری و رسانه‌ای
+        فعالیت داشته‌ام و به‌عنوان قاری قرآن و مجری، در برنامه‌ها
+        و رویدادهای مختلف حضور داشته‌ام.
+
+        یکی از مهم‌ترین بخش‌های فعالیت من، حضور و اجرا در برنامه
+        <span class="ar-bio-highlight">
+            «محفل»
+        </span>
+        طی پنج سال متوالی است که چهار سال آن به‌صورت گروهی و یک سال
+        به‌صورت انفرادی انجام شده است.
+
+        همچنین افتخار اجرای برنامه در
+        <span class="ar-bio-highlight">
+            محضر رهبر معظم انقلاب
+        </span>
+        در دیدار ماه رمضان سال ۱۴۰۳ را داشته‌ام.
+
+        در کنار فعالیت‌های قرآنی و اجرایی، در زمینه هنر و رسانه نیز
+        به‌صورت حرفه‌ای فعالیت می‌کنم و در حوزه‌های
+        <span class="ar-bio-highlight">
+            طراحی گرافیک، تدوین ویدئو، طراحی وب‌سایت،
+            عکاسی و فیلم‌برداری
+        </span>
+        تجربه و مهارت دارم.
+
+        تلاش من همواره بر این بوده است که با ترکیب توانایی‌های
+        هنری، رسانه‌ای و اجرایی، در مسیر رشد و یادگیری مستمر حرکت کنم
+        و در هر زمینه‌ای که فعالیت می‌کنم، اثری حرفه‌ای و خلاقانه
+        ارائه دهم.
+
+    </div>
+
+
+    <div class="ar-bio-skills">
+
+        <span class="ar-bio-skill">
+            قاری قرآن
+        </span>
+
+        <span class="ar-bio-skill">
+            مجری
+        </span>
+
+        <span class="ar-bio-skill">
+            طراحی گرافیک
+        </span>
+
+        <span class="ar-bio-skill">
+            تدوین ویدئو
+        </span>
+
+        <span class="ar-bio-skill">
+            طراحی وب‌سایت
+        </span>
+
+        <span class="ar-bio-skill">
+            عکاسی و فیلم‌برداری
+        </span>
+
+    </div>
+
+</section>
+        
+
 
     </main>
 
